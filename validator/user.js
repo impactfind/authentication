@@ -5,9 +5,6 @@ module.exports.create = {
     password: [
         {type: "string", required: true, message: "password harus diisi"}
     ],
-    permissions: [
-        {type: "array", required: true, message: "permissions harus diisi"}
-    ]
 };
 
 module.exports.detail = {
@@ -23,9 +20,6 @@ module.exports.update = {
     password: [
         {type: "string", min: 6, message: "password harus minimal 6 karakter"}
     ],
-    permissions: [
-        {type: "array", required: true, message: "permissions harus berupa array"}
-    ]
 }
 
 module.exports.remove = {

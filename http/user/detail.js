@@ -62,7 +62,7 @@ module.exports.changePassword = function(req, res) {
 
 module.exports.login = function(req, res) {
     const params = req.body
-
+  console.log('ini params', params)
     return Validate("login", params)
         .then(() => shared.login(params))
         .then((token) => res.success({
@@ -74,16 +74,17 @@ module.exports.login = function(req, res) {
 }
 
 module.exports.create = function(req, res) {
-    const params = req.body
+  let params = req.body
+  params.permissions = ["Member"];
 
-    return Validate("create", params)
-        .then(() => shared.create(params))
-        .then((payload) => res.success({
-            message: "User berhasil dibuat",
-            payload: pickby(payload)
-        }))
-        .catch((err)=> {
-          console.log('err',err)
-          res.error(err)
-        })
+  return Validate("create", params)
+    .then(() => shared.create(params))
+    .then((payload) => res.success({
+      message: "User berhasil dibuat",
+      payload: pickby(payload)
+    }))
+    .catch((err)=> {
+      console.log('err',err)
+      res.error(err)
+    })
 }
