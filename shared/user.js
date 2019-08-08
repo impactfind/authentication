@@ -1,7 +1,7 @@
 const Promise = require("bluebird")
 const jwt = require("jsonwebtoken")
 const UserModel = __model.mysql("user")
-const UserRedisModel = __model.redis("user")
+// const UserRedisModel = __model.redis("user")
 const CodeError = __lib("code_error")
 const {compare, encode} = __lib("password")
 
@@ -143,7 +143,7 @@ const login = module.exports.login = function({username, password}) {
                 throw new CodeError("Username atau Password salah", 401)
             }
 
-            UserRedisModel.activeSession({id: admin.id, permissions: admin.permissions})
+            // UserRedisModel.activeSession({id: admin.id, permissions: admin.permissions})
 
             return signAdmin(admin)
         })
